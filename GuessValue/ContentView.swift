@@ -8,17 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+//    @State private var currentValue: Double
+//    @State private var targetValue: Int
+    
+    private let sliderMinimumValue = 0.0
+    private let sliderMaximumValue = 100.0
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Text("Подвиньте слайдер как можно ближе к: \(targetValue)")
+            HStack {
+                Text("\(lround(sliderMinimumValue))")
+                UISliderView(currentValue: $currentValue, targetValue: $targetValue)
+                Text("\(lround(sliderMaximumValue))")
+            }
+            Button("Проверь меня!", action: { })
+            Button("Начать Заново", action: { })
         }
-        .padding()
+        
     }
 }
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
