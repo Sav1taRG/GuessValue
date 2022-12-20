@@ -11,7 +11,7 @@ struct UISliderView: UIViewRepresentable {
     
     @Binding var currentValue: Double
     @Binding var targetValue: Int
-    @State private var computedScore = 0
+    @Binding var computedScore: Int
     
     func makeUIView(context: Context) -> UISlider {
         let slider = UISlider()
@@ -26,7 +26,7 @@ struct UISliderView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UISlider, context: Context) {
-        uiView.thumbTintColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
+        uiView.thumbTintColor = UIColor(red: 1, green: 0, blue: 0, alpha: CGFloat(computedScore) / 100)
         uiView.value = Float(currentValue)
     }
     
@@ -43,13 +43,14 @@ struct UISliderView: UIViewRepresentable {
 struct UISliderView_Previews: PreviewProvider {
     static var previews: some View {
         UISliderView(currentValue: .constant(10),
-                     targetValue: .constant(20))
+                     targetValue: .constant(20),
+                     computedScore: .constant(30))
     }
 }
 
 
 extension UISliderView {
-    final class Coordinator: NSObject {
+    class Coordinator: NSObject {
         @Binding var currentValue: Double
         @Binding var targetValue: Int
         @Binding var computedScore: Int
@@ -65,18 +66,6 @@ extension UISliderView {
         
         @objc func valueChanged(_ sender: UISlider) {
             self.currentValue = Double(sender.value)
-            computedScore = computeScore()
-            sender.thumbTintColor = UIColor(
-                red: 1,
-                green: 0,
-                blue: 0,
-                alpha: CGFloat(computedScore/100)
-            )
-        }
-        
-        private func computeScore() -> Int {
-            let difference = abs(targetValue - lround(currentValue * 100))
-            return 100 - difference
         }
     }
 }
