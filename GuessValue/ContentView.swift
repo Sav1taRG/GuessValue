@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-//    @State private var currentValue = 50.0
-//    @State private var targetValue = Int.random(in: 0...100)
-    @StateObject private var logicManager = LogicManager.shared
+    @State private var targetValue = Int.random(in: 0...100)
+    @State private var computedScore = 0
+    @State private var currentValue = 0.0
     
     @State private var showAlert = false
     
@@ -19,16 +19,16 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text("Подвиньте слайдер как можно ближе к: \(logicManager.targetValue)")
+            Text("Подвиньте слайдер как можно ближе к: \(targetValue)")
             HStack {
                 Text("\(lround(sliderMinValue))")
                     .padding(.leading)
                 
-                UISliderView(currentValue: $logicManager.currentValue,
-                             targetValue: $logicManager.targetValue,
-                             computedScore: $logicManager.computedScore)
-                .onChange(of: logicManager.currentValue) { newValue in
-                    logicManager.setSliderThumbAlpha()
+                UISliderView(currentValue: $currentValue,
+                             targetValue: $targetValue,
+                             computedScore: $computedScore)
+                .onChange(of: currentValue) { newValue in
+                    setSliderThumbAlpha()
                 }
                 
                 Text("\(lround(sliderMaxValue))")
@@ -39,24 +39,36 @@ struct ContentView: View {
                 showAlert.toggle()
             }
             .alert("Your Score:", isPresented: $showAlert, actions: { }) {
-                Text("\(logicManager.computedScore)")
+                Text("\(computedScore)")
             }
             
             
             Button("Начать Заново") {
-                logicManager.targetValue = Int.random(in: Int(sliderMinValue)...Int(sliderMaxValue))
-                logicManager.setSliderThumbAlpha()
+                targetValue = Int.random(in: Int(sliderMinValue)...Int(sliderMaxValue))
+                setSliderThumbAlpha()
             }
-                .padding()
+            .padding()
         }
-       
         .onAppear {
-            logicManager.setSliderThumbAlpha()
+            setSliderThumbAlpha()
+            
         }
     }
 }
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+extension ContentView {
+    private func computeScore() -> Int {
+        let difference = abs(targetValue - lround(Double(currentValue)))
+        return 100 - difference
+    }
+    
+    private func setSliderThumbAlpha() {
+        computedScore = computeScore()
     }
 }
