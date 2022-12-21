@@ -12,7 +12,7 @@
 		3024404229524C04006211A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3024404129524C04006211A2 /* Assets.xcassets */; };
 		3024404529524C04006211A2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3024404429524C04006211A2 /* Preview Assets.xcassets */; };
 		3024404C29524C2F006211A2 /* UISliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3024404B29524C2F006211A2 /* UISliderView.swift */; };
-		3024405029527191006211A2 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3024404F29527191006211A2 /* SettingsManager.swift */; };
+		3024405029527191006211A2 /* LogicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3024404F29527191006211A2 /* LogicManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,7 +22,7 @@
 		3024404129524C04006211A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3024404429524C04006211A2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3024404B29524C2F006211A2 /* UISliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISliderView.swift; sourceTree = "<group>"; };
-		3024404F29527191006211A2 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
+		3024404F29527191006211A2 /* LogicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +57,7 @@
 			children = (
 				3024403D29524C01006211A2 /* GuessValueApp.swift */,
 				3024403F29524C01006211A2 /* ContentView.swift */,
-				3024404F29527191006211A2 /* SettingsManager.swift */,
+				3024404F29527191006211A2 /* LogicManager.swift */,
 				3024404B29524C2F006211A2 /* UISliderView.swift */,
 				3024404129524C04006211A2 /* Assets.xcassets */,
 				3024404329524C04006211A2 /* Preview Content */,
@@ -108,7 +108,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3024403529524C01006211A2 /* Build configuration list for PBXProject "GuessValue" */;
+			buildConfigurationList = 3024403529524C01006211A2 /* Build configuration list for PBXProject "GuessValue SUI+UIKit" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -143,7 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3024405029527191006211A2 /* SettingsManager.swift in Sources */,
+				3024405029527191006211A2 /* LogicManager.swift in Sources */,
 				3024404029524C01006211A2 /* ContentView.swift in Sources */,
 				3024403E29524C01006211A2 /* GuessValueApp.swift in Sources */,
 				3024404C29524C2F006211A2 /* UISliderView.swift in Sources */,
@@ -290,9 +290,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = RG.GuessValue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -319,16 +322,19 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = RG.GuessValue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3024403529524C01006211A2 /* Build configuration list for PBXProject "GuessValue" */ = {
+		3024403529524C01006211A2 /* Build configuration list for PBXProject "GuessValue SUI+UIKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3024404629524C04006211A2 /* Debug */,

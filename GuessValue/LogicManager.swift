@@ -7,10 +7,14 @@
 
 import Foundation
 
-class SettingsManager: ObservableObject {
+class LogicManager: ObservableObject {
+    static let shared = LogicManager()
+    
     @Published var targetValue = Int.random(in: 0...100)
-    @Published var computedScore = 5
-    @Published var currentValue = 50.0
+    @Published var computedScore = 0
+    @Published var currentValue = 0.0
+    
+    private init() { }
     
     func computeScore() -> Int {
         let difference = abs(targetValue - lround(Double(currentValue)))
